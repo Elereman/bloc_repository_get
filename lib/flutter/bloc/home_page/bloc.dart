@@ -16,6 +16,7 @@ class HomePageBloc {
       : _eventSubject = BehaviorSubject<HomePageEvent>(),
         _stateSubject = BehaviorSubject<HomePageState>(),
         super() {
+    initializeApp();
     _eventSubject.listen((HomePageEvent event) {
       _state = event.reduce(_state);
       _stateSubject.add(_state);
@@ -26,4 +27,6 @@ class HomePageBloc {
     _eventSubject
         .add(InitializeAppEvent(_initializeAppUseCase, _eventSubject.sink));
   }
+
+  Stream<HomePageState> get stateStream => _stateSubject.stream;
 }
