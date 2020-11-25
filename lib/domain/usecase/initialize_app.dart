@@ -11,7 +11,5 @@ class InitializeAppUseCaseDefault implements InitializeAppUseCase {
   InitializeAppUseCaseDefault(this._service);
 
   @override
-  Future<List<Repository>> call() {
-    throw UnimplementedError();
-  }
+  Future<List<Repository>> call() => _service();
 }

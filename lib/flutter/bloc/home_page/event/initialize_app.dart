@@ -17,7 +17,7 @@ class InitializeAppEvent implements HomePageEvent {
     _initializeAppUseCase()
         .then((List<Repository> repositories) => _eventSink.add(
             DataLoadedEvent(HomePageState(BlocStatus.Loaded, repositories))))
-        .catchError(() => _eventSink.add(ErrorEvent()));
+        .catchError((Object e) => _eventSink.add(ErrorEvent()));
     return HomePageState(BlocStatus.Loading, null);
   }
 }
